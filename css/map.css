@@ -1,0 +1,12 @@
+#mapContainer {
+      text-align: center;
+      margin-left: 30px;
+      margin-right: 30px;
+      background-color:midnightblue;
+      border-radius: 10px;
+}
+
+h1,p {
+      text-align: center;
+}
+
