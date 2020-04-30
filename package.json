@@ -1,0 +1,23 @@
+{
+  "name": "datavizfinal",
+  "version": "1.0.0",
+  "description": "Running the project:  1. npm install datamaps 2. Open maps.html in any browser",
+  "main": "index.js",
+  "dependencies": {
+    "datamaps": "^0.5.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thisisakshi/datavizfinal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thisisakshi/datavizfinal/issues"
+  },
+  "homepage": "https://github.com/thisisakshi/datavizfinal#readme"
+}
