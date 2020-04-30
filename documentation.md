@@ -6,7 +6,8 @@ Group Members:
 
 Datasets:
 1. https://www.kaggle.com/danevans/world-bank-wdi-212-health-systems
-2. https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases
+2. https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases (not using)
+3. https://github.com/pomber/covid19 (JSON)
 
 Final Project Goals: 
 1. GeoMap .
