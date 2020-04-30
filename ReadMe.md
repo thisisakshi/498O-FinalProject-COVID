@@ -1,6 +1,9 @@
 Running the project: 
-1. npm install datamaps
-2. Open maps.html in any browser
+1. npm install 
+2. npm install datamaps
+3. npm install express
+4. npm install cors
+5. Open maps.html in any browser
 
 notes to self - 
 1.  npm install datamaps downloads all datamaps in node_modules/datamaps/dist

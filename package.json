@@ -4,7 +4,9 @@
   "description": "Running the project:  1. npm install datamaps 2. Open maps.html in any browser",
   "main": "index.js",
   "dependencies": {
-    "datamaps": "^0.5.9"
+    "cors": "^2.8.5",
+    "datamaps": "^0.5.9",
+    "express": "^4.17.1"
   },
   "devDependencies": {},
   "scripts": {
