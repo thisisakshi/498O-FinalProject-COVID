@@ -5,13 +5,26 @@
 </head>
 <body>
   <script src = "js/d3.v3.min.js"></script>
+  <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
   <script src = "js/topojson.v1.min.js"></script>
   <script src = "node_modules/datamaps/dist/datamaps.world.min.js"></script>
+
   <link rel="stylesheet" type="text/css" href="css/map.css">
   
   <h1>Health systems and the COVID-19 Pandemic</h1>
   <p>A project by:<br/>Lucia Kim | Suyash Nepal | Kelli Webber | Akshita Agarwal</p>
+
+<div class="radioButtons">
+  <input type="radio" id="HealthGDP" name="filter" value="HealthGDP">
+  <label for="HealthGDP">Health GDP</label><br>
+
+  <input type="radio" id="PeopleOver65" name="filter" value="PeopleOver65">
+  <label for="PeopleOver65">People Over 65 GDP</label><br>
+</div><br/>
+  
+
   <div id="mapContainer"></div>
   <p>University of Maryland, College Park | CMSC 498O | Spring 2020 | Final Project</p>
+  
   <script src = "js/map.js"></script>
 </body>
