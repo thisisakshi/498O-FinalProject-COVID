@@ -5,13 +5,48 @@
 </head>
 <body>
   <script src = "js/d3.v3.min.js"></script>
+  <script src="https://d3js.org/d3-fetch.v1.min.js"></script>
   <script src = "js/topojson.v1.min.js"></script>
   <script src = "node_modules/datamaps/dist/datamaps.world.min.js"></script>
   <link rel="stylesheet" type="text/css" href="css/map.css">
+
+  <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/slider.js"></script>
   
   <h1>Health systems and the COVID-19 Pandemic</h1>
   <p>A project by:<br/>Lucia Kim | Suyash Nepal | Kelli Webber | Akshita Agarwal</p>
+
+  
+
+  <p>
+  <label for="date">Date Slider: </label>
+  <input type="text" id="date" readonly style="border:0; color:#f6931f; font-weight:bold;">
+  </p>
+
+  <div id="slider"></div>
+  <br>
+
   <div id="mapContainer"></div>
   <p>University of Maryland, College Park | CMSC 498O | Spring 2020 | Final Project</p>
-  <script src = "js/map.js"></script>
+
+  
+
+  <script src="js/map.js"></script>
+
+
+  <script>
+  	d3.json("https://pomber.github.io/covid19/timeseries.json")
+      .then(data => {
+        console.log(data);
+        console.log(data[0]);
+      });
+
+  </script>
+
+
+
+  
+
 </body>
