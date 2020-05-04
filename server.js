@@ -19,5 +19,5 @@ app.get('/', function(req, res){
     
 
 app.listen(8080, function() {
-  console.log("A4 Data Server is running at localhost: 8080")
+  console.log("DataVizFinal Data Server is running at localhost: 8080")
 });

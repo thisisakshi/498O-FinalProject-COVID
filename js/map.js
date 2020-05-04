@@ -26,7 +26,15 @@ var map = new Datamap({
 
       scope: 'world',
       element: document.getElementById('mapContainer'),
-      projection: 'mercator',
+      done: function(datamap) {
+            datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+                alert(geography.properties.name);
+                
+                // call function here to create plots
+                
+            });
+      },
+      projection: d3.geoMercator,
       height: 500,
       width: 800,
 
