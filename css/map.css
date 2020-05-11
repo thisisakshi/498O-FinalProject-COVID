@@ -1,10 +1,7 @@
 body {     
-      padding-top: 40px;
-      padding-left: 100px;
-      padding-right: 50px;
-}
-
-#mapContainer {     
+      padding-top: 60px;
+      padding-left: 20px;
+      padding-right: 20px;
 }
 
 h1,p, .centerContainer{
@@ -16,35 +13,15 @@ h1,p, .centerContainer{
 }
 
 .tableLeft {
-      width: 30%;
+      width: 40%;
+      padding: 20px;
+      background-color: rgb(224, 212, 212);
 }
 
 .tableRight {
-      padding: 15px;
-      width: 70%;
+      width: 60%;
 }
 
-
-.worldmap_tooltip{
-      width:200px;
-      height:90px;
-      padding:1px;
-      border-radius:4px;
-      text-align: center;
-}
-.worldmap_tooltip_title{
-      width:100%;
-      height:20%;
-      border-bottom:1px solid black;
-      font-size: 12px;
-      line-height: 20px;
-      font-weight: bold;
-}
-.worldmap_tooltip_data_label{
-      text-align: center;
-      width:80%;
-      font-size: 11px;
-      font-weight:bold;
-}
-
-
+/* #my_dataviz {
+      background-color: coral;
+} */
