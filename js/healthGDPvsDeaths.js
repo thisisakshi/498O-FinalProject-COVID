@@ -1,34 +1,30 @@
 var jsonArray = [];
 
-function olderpopulation_vs_deaths_data() {
+function healthGDP_vs_deaths_data() {
       console.log("healthGDP_vs_deaths_data()");
-      console.log(covidData);
-      console.log(above55Data);
 
       for (country in covidData) {
-            if (country == "$World")
-                  break;
-            if (covidData[country] > 0 && above55Data[country] > 0)
-                  addCountryItem(country, covidData[country], above55Data[country])
+            if (covidData[country] > 0 && healthData[country] > 0)
+                  addCountryItem(country, covidData[country], healthData[country])
       }
 
+
       drawGraph();
-      addLabels("Number of deaths (as of yesterday)", "% of population over 55")
+      addLabels("Number of deaths (as of yesterday)", "Health GDP %")
 }
 
-function addCountryItem(country, deaths, peopleAbove55) {
-      console.log(country+" , "+deaths+" , "+peopleAbove55+"\n");
+function addCountryItem(country, deaths, healthData) {
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
-          "peopleAbove55": peopleAbove55
+          "healthGDP": healthData
       });
   }
 
 function drawGraph() {
       
       console.log("drawGraph()")
-      d3.select("svg").remove();
+      d3.selectAll("svg").remove();
       
       var svg = d3.select(".tableRight").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -49,7 +45,7 @@ function drawGraph() {
 
       // Add Y axis
       var y = d3.scaleLinear()
-      .domain([0,50])
+      .domain([0,20])
       .range([ height, 0]);
 
       svg.append("g")
@@ -76,7 +72,7 @@ function drawGraph() {
       
       var mousemove = function(d) {
             tooltip
-            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> % of people over 55: " + d["peopleAbove55"])
+            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> Health GDP %: " + d["healthGDP"])
             .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -96,9 +92,9 @@ function drawGraph() {
       .append("circle")
       .attr("id", "circleBasicTooltip")
       .attr("cx", d => x(d["deaths"]))
-      .attr("cy", d => y(d["peopleAbove55"]))
+      .attr("cy", d => y(d["healthGDP"]))
       .attr("r", 7)
-      .style("fill", "red")
+      .style("fill", "blue")
       .style("opacity", .4)
       .on("mouseover", mouseover )
       .on("mousemove", mousemove )
