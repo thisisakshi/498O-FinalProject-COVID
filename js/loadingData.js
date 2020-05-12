@@ -14,6 +14,7 @@ var healthData = new d3.map();
 var hospitalBedsData = new d3.map()
 var handwashingStationData = new d3.map()
 var covidData = new d3.map()
+var codeToCountry = new d3.map()
 
 // Loading all the data
 d3.queue()
@@ -23,6 +24,7 @@ d3.queue()
             function(d) {
                   hospitalBedsData.set(d["location"], +d["hospital_beds_per_100k"])
                   handwashingStationData.set(d["location"], +d["handwashing_facilities"])
+                  codeToCountry.set(d["iso_code"],d["location"]) 
             })
       .defer(d3.json, "http://localhost:8080/", 
             function(d) {
@@ -41,7 +43,7 @@ d3.queue()
                         }
                         covidConfirmedData.set(country, d[x][len - 1]["confirmed"]);
                         covidRecoveredData.set(country, d[x][len - 1]["recovered"]);
-                        covidDeathData.set(country, d[x][len - 1]["deaths"]);        
+                        covidDeathData.set(country, d[x][len - 1]["deaths"]);       
                   } 
                   testData = d;
             })
