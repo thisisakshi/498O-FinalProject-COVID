@@ -1,5 +1,5 @@
-function olderpopulation_vs_deaths_data() {
-      console.log("healthGDP_vs_deaths_data()");
+function hospitalBeds_vs_deaths_data() {
+      console.log("hospitalBeds_vs_deaths_data()");
 
       var jsonArray = [];
       d3.selectAll("svg").remove();
@@ -8,19 +8,19 @@ function olderpopulation_vs_deaths_data() {
       for (country in covidDeathData) {
             if (country == "$World")
                   break;
-            if (covidDeathData[country] > 0 && above55Data[country] > 0)
-                  addCountryItem(jsonArray, country, covidDeathData[country], above55Data[country])
+            if (covidDeathData[country] > 0 && hospitalBedsData[country] > 0)
+                  addCountryItem(jsonArray, country, covidDeathData[country], hospitalBedsData[country])
       }
 
       drawGraph(jsonArray);
-      addLabels("Number of deaths (as of yesterday)", "% of population over 55")
+      addLabels("Number of deaths (as of yesterday)", "# of hospital beds per 100k")
 }
 
-function addCountryItem(jsonArray, country, deaths, peopleAbove55) {
+function addCountryItem(jsonArray, country, deaths, noOfBeds) {
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
-          "peopleAbove55": peopleAbove55
+          "noOfBeds": noOfBeds
       });
   }
 
@@ -74,7 +74,7 @@ function drawGraph(jsonArray) {
       
       var mousemove = function(d) {
             tooltip
-            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> % of people over 55: " + d["peopleAbove55"])
+            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> Number of Hospital Beds per 100k: " + d["noOfBeds"])
             .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -94,7 +94,7 @@ function drawGraph(jsonArray) {
       .append("circle")
       .attr("id", "circleBasicTooltip")
       .attr("cx", d => x(d["deaths"]))
-      .attr("cy", d => y(d["peopleAbove55"]))
+      .attr("cy", d => y(d["noOfBeds"]))
       .attr("r", 7)
       .style("fill", "red")
       .style("opacity", .4)

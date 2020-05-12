@@ -15,33 +15,25 @@
       <td class="tableLeft">
         <h1>Health systems and the COVID-19 Pandemic</h1>
         <p>A project by:<br/>Lucia Kim | Suyash Nepal | Kelli Webber | Akshita Agarwal</p>
-      
+        <hr>
         <div class="centerContainer">
           <input type="radio" id="Coronavirus" name="filter" value="Coronavirus" onclick="coronavirus()" checked="checked">
           <label for="Coronavirus">Coronavirus</label><br>
 
           <input type="radio" id="Over55_vs_deaths" name="filter" value="Over55_vs_deaths" onclick="olderpopulation_vs_deaths_data()">
-          <label for="Over55_vs_deaths">% of population over 55 vs. Deaths due to COVID-19</label><br>
+          <label for="Over55_vs_deaths">% of population over 55 vs. Deaths</label><br>
 
           <input type="radio" id="HealthGDP_vs_deaths" name="filter" value="HealthGDP_vs_deaths" onclick="healthGDP_vs_deaths_data()">
           <label for="HealthGDP_vs_deaths">HealthGDP vs Deaths due to COVID-19</label><br>
 
-          <!-- <hr>
-          <div class="death_confirmed_recovered">
-            <input type="radio" id="confirmed" name="filter" value="confirmed">
-            <label for="confirmed">Confirmed</label><br>
+          <input type="radio" id="hospitalBeds_vs_deaths" name="filter" value="hospitalBeds_vs_deaths" onclick="hospitalBeds_vs_deaths_data()">
+          <label for="hospitalBeds_vs_deaths">Hospital Beds per 100k vs Deaths</label><br>
 
-            <input type="radio" id="deaths" name="filter" value="deaths">
-            <label for="deaths">Deaths</label><br>
-
-            <input type="radio" id="recovered" name="filter" value="recovered">
-            <label for="recovered">Recovered</label><br>
-          </div> -->
-
-
-          
+          <input type="radio" id="handwashing_vs_confirmed" name="filter" value="handwashing_vs_confirmed" onclick="handwashing_vs_confirmed_data()">
+          <label for="handwashing_vs_confirmed">Handwashing Facilities vs Confirmed Cases</label><br>
 
         </div><br/>
+        <hr>
         <p>University of Maryland, College Park | CMSC 498O | Spring 2020 | Final Project</p>    
       </td>
 
@@ -52,6 +44,9 @@
 
 
 <script src="js/coronavirusMap.js"></script>
-<script src="js/healthGDPvsDeaths.js"></script>
+
 <script src="js/over55vsDeathPlot.js"></script>
+<script src="js/healthGDPvsDeaths.js"></script>
+<script src="js/handwashingVsConfirmed.js"></script>
+<script src="js/hospitalBedsvsDeaths.js"></script>
 <script src="js/loadingData.js"></script>

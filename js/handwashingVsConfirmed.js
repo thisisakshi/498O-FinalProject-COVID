@@ -1,26 +1,26 @@
-function olderpopulation_vs_deaths_data() {
-      console.log("healthGDP_vs_deaths_data()");
+function handwashing_vs_confirmed_data() {
+      console.log("handwashing_vs_confirmed_data()");
 
       var jsonArray = [];
       d3.selectAll("svg").remove();
       d3.selectAll(".tooltip").remove();
 
-      for (country in covidDeathData) {
+      for (country in covidConfirmedData) {
             if (country == "$World")
                   break;
-            if (covidDeathData[country] > 0 && above55Data[country] > 0)
-                  addCountryItem(jsonArray, country, covidDeathData[country], above55Data[country])
+            if (covidConfirmedData[country] > 0 && handwashingStationData[country] > 0)
+                  addCountryItem(jsonArray, country, covidConfirmedData[country], handwashingStationData[country])
       }
 
       drawGraph(jsonArray);
-      addLabels("Number of deaths (as of yesterday)", "% of population over 55")
+      addLabels("Number of confirmed Cases (as of yesterday)", "Handwashing Facilities")
 }
 
-function addCountryItem(jsonArray, country, deaths, peopleAbove55) {
+function addCountryItem(jsonArray, country, confirmed, handwashingStations) {
       jsonArray.push({
           "country": country,
-          "deaths": deaths ,
-          "peopleAbove55": peopleAbove55
+          "confirmed": confirmed ,
+          "handwashingStations": handwashingStations
       });
   }
 
@@ -42,12 +42,12 @@ function drawGraph(jsonArray) {
       svg.append("g")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x)
-      .tickValues([1,10,100,1000,10000,100000, 1000000])
+      .tickValues([1,10,100,1000,10000,100000, 1000000, 6000000])
       .tickFormat(d3.format("d")));
 
       // Add Y axis
       var y = d3.scaleLinear()
-      .domain([0,50])
+      .domain([0,120])
       .range([ height, 0]);
 
       svg.append("g")
@@ -74,7 +74,7 @@ function drawGraph(jsonArray) {
       
       var mousemove = function(d) {
             tooltip
-            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> % of people over 55: " + d["peopleAbove55"])
+            .html(d["country"] + "<br/> Confirmed Cases: " + d["confirmed"]+ "<br/> Handwashing Facilities: " + d["handwashingStations"])
             .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]) + "px")
       }
@@ -93,8 +93,8 @@ function drawGraph(jsonArray) {
       .enter()
       .append("circle")
       .attr("id", "circleBasicTooltip")
-      .attr("cx", d => x(d["deaths"]))
-      .attr("cy", d => y(d["peopleAbove55"]))
+      .attr("cx", d => x(d["confirmed"]))
+      .attr("cy", d => y(d["handwashingStations"]))
       .attr("r", 7)
       .style("fill", "red")
       .style("opacity", .4)

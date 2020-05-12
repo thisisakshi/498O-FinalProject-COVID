@@ -1,5 +1,4 @@
 function healthGDP_vs_deaths_data() {
-      // document.getElementsByClassName(".death_confirmed_recovered").style.
 
       var jsonArray = [];
       d3.selectAll("svg").remove();
@@ -7,9 +6,9 @@ function healthGDP_vs_deaths_data() {
 
       console.log("healthGDP_vs_deaths_data()");
 
-      for (country in covidData) {
-            if (covidData[country] > 0 && healthData[country] > 0)
-                  addCountryItem(jsonArray, country, covidData[country], healthData[country])
+      for (country in covidDeathData) {
+            if (covidDeathData[country] > 0 && healthData[country] > 0)
+                  addCountryItem(jsonArray, country, covidDeathData[country], healthData[country])
       }
 
       drawGraph(jsonArray);
