@@ -3,12 +3,15 @@ width = 800 - margin.left - margin.right,
 height = 600 - margin.top - margin.bottom;
 
 
-var above55Data = new d3.map();
 var covidDeathData = new d3.map();
 var covidConfirmedData = new d3.map();
+var covidRecoveredData = new d3.map();
+
+var above55Data = new d3.map();
 var healthData = new d3.map();
 var hospitalBedsData = new d3.map()
 var handwashingStationData = new d3.map()
+var covidData = new d3.map()
 
 // Loading all the data
 d3.queue()
@@ -16,8 +19,6 @@ d3.queue()
             function(d) {above55Data.set(d["country"], +d['age_55-64_perc'] + +d['age_65+_perc'])})
       .defer(d3.csv, "https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv", 
             function(d) {
-                  covidDeathData.set(d["location"], +d["total_deaths"]);
-                  covidConfirmedData.set(d["location"], +d["total_cases"])
                   hospitalBedsData.set(d["location"], +d["hospital_beds_per_100k"])
                   handwashingStationData.set(d["location"], +d["handwashing_facilities"])
             })
@@ -26,6 +27,20 @@ d3.queue()
                   for (i = 0; i < d.length; i++) {
                         healthData.set(d[i]["Country"], +d[i]["2017"])
                   }  
+            })
+      .defer(d3.json,"https://pomber.github.io/covid19/timeseries.json", 
+            function(d) {
+                  for (x in d) {
+                        var len = d[x].length;
+                        if (x == "US") {
+                              country = "United States";
+                        } else {
+                              country = x;
+                        }
+                        covidConfirmedData.set(country, d[x][len - 1]["confirmed"]);
+                        covidRecoveredData.set(country, d[x][len - 1]["recovered"]);
+                        covidDeathData.set(country, d[x][len - 1]["deaths"]);        
+                  } 
             })
       .await(ready);
 
