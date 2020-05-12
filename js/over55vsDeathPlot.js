@@ -1,22 +1,22 @@
-var jsonArray = [];
-
 function olderpopulation_vs_deaths_data() {
       console.log("healthGDP_vs_deaths_data()");
       console.log(covidData);
       console.log(above55Data);
 
+      var jsonArray = [];
+
       for (country in covidData) {
             if (country == "$World")
                   break;
             if (covidData[country] > 0 && above55Data[country] > 0)
-                  addCountryItem(country, covidData[country], above55Data[country])
+                  addCountryItem(jsonArray, country, covidData[country], above55Data[country])
       }
 
-      drawGraph();
+      drawGraph(jsonArray);
       addLabels("Number of deaths (as of yesterday)", "% of population over 55")
 }
 
-function addCountryItem(country, deaths, peopleAbove55) {
+function addCountryItem(jsonArray, country, deaths, peopleAbove55) {
       console.log(country+" , "+deaths+" , "+peopleAbove55+"\n");
       jsonArray.push({
           "country": country,
@@ -25,7 +25,7 @@ function addCountryItem(country, deaths, peopleAbove55) {
       });
   }
 
-function drawGraph() {
+function drawGraph(jsonArray) {
       
       console.log("drawGraph()")
       d3.select("svg").remove();
@@ -104,26 +104,3 @@ function drawGraph() {
       .on("mousemove", mousemove )
       .on("mouseleave", mouseleave )     
 }
-
-function addLabels(key1, key2) {
-      console.log("ADDING LABELS");
-  
-      // X-Axis
-      d3.select('svg').append("text")
-            .attr("x", width/2)
-            .attr("y", 600)
-            .attr("text-anchor", "start")
-            .style("font-size", "16px") 
-            .text(key1);
-  
-      // Y-Axis
-      d3.select('svg').append("text")
-            .attr("transform", `rotate(-90)`)
-            .attr("x", -250)
-            .attr("y", 15)
-            .attr("dy", "1em")
-            .attr("text-anchor", "end")
-            .style("font-size", "16px") 
-            .text(key2);
-  }
-

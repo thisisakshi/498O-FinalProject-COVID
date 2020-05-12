@@ -1,19 +1,19 @@
-var jsonArray = [];
-
 function healthGDP_vs_deaths_data() {
+
+      var jsonArray = [];
+
       console.log("healthGDP_vs_deaths_data()");
 
       for (country in covidData) {
             if (covidData[country] > 0 && healthData[country] > 0)
-                  addCountryItem(country, covidData[country], healthData[country])
+                  addCountryItem(jsonArray, country, covidData[country], healthData[country])
       }
 
-
-      drawGraph();
+      drawGraph(jsonArray);
       addLabels("Number of deaths (as of yesterday)", "Health GDP %")
 }
 
-function addCountryItem(country, deaths, healthData) {
+function addCountryItem(jsonArray, country, deaths, healthData) {
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
@@ -21,7 +21,7 @@ function addCountryItem(country, deaths, healthData) {
       });
   }
 
-function drawGraph() {
+function drawGraph(jsonArray) {
       
       console.log("drawGraph()")
       d3.selectAll("svg").remove();
@@ -100,26 +100,3 @@ function drawGraph() {
       .on("mousemove", mousemove )
       .on("mouseleave", mouseleave )     
 }
-
-function addLabels(key1, key2) {
-      console.log("ADDING LABELS");
-  
-      // X-Axis
-      d3.select('svg').append("text")
-            .attr("x", width/2)
-            .attr("y", 600)
-            .attr("text-anchor", "start")
-            .style("font-size", "16px") 
-            .text(key1);
-  
-      // Y-Axis
-      d3.select('svg').append("text")
-            .attr("transform", `rotate(-90)`)
-            .attr("x", -250)
-            .attr("y", 15)
-            .attr("dy", "1em")
-            .attr("text-anchor", "end")
-            .style("font-size", "16px") 
-            .text(key2);
-  }
-

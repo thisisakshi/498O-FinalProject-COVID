@@ -24,3 +24,25 @@ d3.queue()
 function ready() {
       console.log("Data Loaded")
 }
+
+function addLabels(key1, key2) {
+      console.log("ADDING LABELS");
+  
+      // X-Axis
+      d3.select('svg').append("text")
+            .attr("x", width/2)
+            .attr("y", 600)
+            .attr("text-anchor", "start")
+            .style("font-size", "16px") 
+            .text(key1);
+  
+      // Y-Axis
+      d3.select('svg').append("text")
+            .attr("transform", `rotate(-90)`)
+            .attr("x", -250)
+            .attr("y", 15)
+            .attr("dy", "1em")
+            .attr("text-anchor", "end")
+            .style("font-size", "16px") 
+            .text(key2);
+  }
