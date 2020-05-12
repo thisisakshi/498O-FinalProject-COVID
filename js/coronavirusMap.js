@@ -67,7 +67,7 @@ function coronavirus() {
       
       var mousemove = function(d) {
             tooltip
-            .html("Number of cases in " + d.id + ": " + d.total)
+            .html("Number of cases in " + codeToCountry.get(d.id) + ": " + d.total)
             .style("left", (d3.mouse(this)[0]+90) + "px")
             .style("right", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
             .style("top", (d3.mouse(this)[1]+90) + "px")
