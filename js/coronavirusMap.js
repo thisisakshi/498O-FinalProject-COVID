@@ -3,7 +3,7 @@ function coronavirus() {
   d3.selectAll("svg").remove();
   // The svg
   var svg = d3.select(".tableRight")
-    .append("svg").attr("width", 800).attr("height", 622),
+    .append("svg").attr("width", 800).attr("height", 600),
     width = +svg.attr("width"),
     height = +svg.attr("height");
   
