@@ -1,4 +1,10 @@
 coronavirus();
+
+
+function clickHandler(d) {
+  cvLineGraph(d.properties.name);
+}
+
 function coronavirus() {
   d3.selectAll("svg").remove();
   // The svg
@@ -58,6 +64,7 @@ function coronavirus() {
         .attr("fill", function (d) {
           d.total = data.get(d.id) || 0;
           return colorScale(d.total);
-        });
+        })
+        .on("click", clickHandler);
       }
 }

@@ -3,6 +3,8 @@ width = 800 - margin.left - margin.right,
 height = 600 - margin.top - margin.bottom;
 
 
+var testData;
+
 var covidDeathData = new d3.map();
 var covidConfirmedData = new d3.map();
 var covidRecoveredData = new d3.map();
@@ -41,6 +43,7 @@ d3.queue()
                         covidRecoveredData.set(country, d[x][len - 1]["recovered"]);
                         covidDeathData.set(country, d[x][len - 1]["deaths"]);        
                   } 
+                  testData = d;
             })
       .await(ready);
 

@@ -51,12 +51,15 @@ var svg = d3.select(".tableRight").append("svg")
             .append("g")
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
-
 // Read in data
 // d3.json("https://pomber.github.io/covid19/timeseries.json")
 //      .then(DATA => {
        //console.log(DATA);
            for (x in testData) {
+           	console.log(country);
+           	if (country == "USA") {
+           		country = "US";
+           	}
              if(x == country){ //country name variablle here
                data = testData[x];
              }
