@@ -6,7 +6,6 @@ var above55Data = new d3.map();
 var covidData = new d3.map();
 var healthData = new d3.map();
 
-
 // Loading all the data
 d3.queue()
       .defer(d3.csv, "https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv", 

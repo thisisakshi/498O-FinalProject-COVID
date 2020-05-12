@@ -1,9 +1,9 @@
 function olderpopulation_vs_deaths_data() {
       console.log("healthGDP_vs_deaths_data()");
-      console.log(covidData);
-      console.log(above55Data);
-
+      
       var jsonArray = [];
+      d3.selectAll("svg").remove();
+      d3.selectAll(".tooltip").remove();
 
       for (country in covidData) {
             if (country == "$World")
@@ -17,7 +17,6 @@ function olderpopulation_vs_deaths_data() {
 }
 
 function addCountryItem(jsonArray, country, deaths, peopleAbove55) {
-      console.log(country+" , "+deaths+" , "+peopleAbove55+"\n");
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
@@ -28,7 +27,6 @@ function addCountryItem(jsonArray, country, deaths, peopleAbove55) {
 function drawGraph(jsonArray) {
       
       console.log("drawGraph()")
-      d3.select("svg").remove();
       
       var svg = d3.select(".tableRight").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -38,7 +36,7 @@ function drawGraph(jsonArray) {
 
       // Add X axis
       var x = d3.scaleLog()
-      .domain([1, 1000000])
+      .domain([0.1, 1000000])
       .range([0, width]);
       
       svg.append("g")

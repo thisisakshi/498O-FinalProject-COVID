@@ -1,6 +1,9 @@
 function healthGDP_vs_deaths_data() {
+      // document.getElementsByClassName(".death_confirmed_recovered").style.
 
       var jsonArray = [];
+      d3.selectAll("svg").remove();
+      d3.selectAll(".tooltip").remove();
 
       console.log("healthGDP_vs_deaths_data()");
 
@@ -24,7 +27,6 @@ function addCountryItem(jsonArray, country, deaths, healthData) {
 function drawGraph(jsonArray) {
       
       console.log("drawGraph()")
-      d3.selectAll("svg").remove();
       
       var svg = d3.select(".tableRight").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -33,8 +35,8 @@ function drawGraph(jsonArray) {
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
       // Add X axis
-      var x = d3.scaleLog()
-      .domain([1, 1000000])
+      let x = d3.scaleLog()
+      .domain([0.1, 1000000])
       .range([0, width]);
       
       svg.append("g")
@@ -44,7 +46,7 @@ function drawGraph(jsonArray) {
       .tickFormat(d3.format("d")));
 
       // Add Y axis
-      var y = d3.scaleLinear()
+      let y = d3.scaleLinear()
       .domain([0,20])
       .range([ height, 0]);
 
