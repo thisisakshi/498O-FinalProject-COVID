@@ -1,12 +1,16 @@
 coronavirus();
 
-
 function clickHandler(d) {
   cvLineGraph(d.properties.name);
 }
 
 function coronavirus() {
+  console.log("coronavirusMap()")
+  // resetGraphSpace();
   d3.selectAll("svg").remove();
+  d3.selectAll(".curve").remove();
+  d3.selectAll(".d3-tip").remove();
+  
   // The svg
   var svg = d3.select(".tableRight")
     .append("svg").attr("width", 800).attr("height", 600),
@@ -52,41 +56,15 @@ function coronavirus() {
     .await(ready);
 
   function ready(error, topo) {
-           // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
-      // Its opacity is set to 0: we don't see it by default.
-      var tooltip = d3.select(".tableRight")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "white")
-      .style("border", "solid")
-      .style("border-width", "1px")
-      .style("border-radius", "5px")
-      .style("padding", "10px")
-
-      // A function that change this tooltip when the user hover a point.
-      // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-      var mouseover = function(d) {
-            tooltip
-            .style("opacity", 1)
-      }
-      
-      var mousemove = function(d) {
-            tooltip
-            .html("Number of cases in " + codeToCountry.get(d.id) + ": " + d.total)
-            .style("left", (d3.mouse(this)[0]+90) + "px")
-            .style("right", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-            .style("top", (d3.mouse(this)[1]+90) + "px")
-            .style("bottom", (d3.mouse(this)[1]+90) + "px")
-      }
-      
-      // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-      var mouseleave = function(d) {
-            tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 0)
-    }
+    
+    var tip = d3.tip()
+            .attr('class', 'd3-tip')
+            .offset([-10, 0])
+            .html(function(d) {
+              return "<strong>Country: </strong><span class='details'>" + codeToCountry.get(d.id) + "<br></span>" + "<strong>Confirmed Cases: </strong><span class='details'>" + d.total + "</span>";
+            })
+    svg.call(tip);
+    
 
       // Draw the map
       svg.append("g")
@@ -94,9 +72,6 @@ function coronavirus() {
         .data(topo.features)
         .enter()
         .append("path")
-        .on("mouseover", mouseover )
-        .on("mousemove", mousemove )
-        .on("mouseleave", mouseleave )  
           // draw each country
         .attr("d", d3.geoPath().projection(projection))
           // set the color of each country
@@ -104,7 +79,27 @@ function coronavirus() {
             d.total = data.get(d.id) || 0;
             return colorScale(d.total);
           })
-        .on("click", clickHandler);
+        .on("click", clickHandler)
+
+        // tooltips
+        .style("stroke","white") 
+        .style('stroke-width', 0.3)
+
+        .on('mouseover',function(d){
+          tip.show(d);
+
+          d3.select(this)
+            .style("opacity", 1)
+            .style("stroke","#383838")
+            .style("stroke-width",1);
+        })
+        .on('mouseout', function(d){
+          tip.hide(d);
+
+          d3.select(this)
+            .style("stroke","white")
+            .style("stroke-width",0.3);
+        });
         }
 }
 

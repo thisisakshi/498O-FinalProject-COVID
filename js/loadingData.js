@@ -16,6 +16,12 @@ var handwashingStationData = new d3.map()
 var covidData = new d3.map()
 var codeToCountry = new d3.map()
 
+function resetGraphSpace() {
+      d3.selectAll("svg").remove();
+      d3.selectAll(".curve").remove();
+      d3.selectAll(".d3-tip").remove();
+  }
+
 // Loading all the data
 d3.queue()
       .defer(d3.csv, "https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv", 
@@ -74,3 +80,5 @@ function addLabels(key1, key2) {
             .style("font-size", "16px") 
             .text(key2);
   }
+
+

@@ -1,9 +1,7 @@
 function handwashing_vs_confirmed_data() {
       console.log("handwashing_vs_confirmed_data()");
-
+      resetGraphSpace()
       var jsonArray = [];
-      d3.selectAll("svg").remove();
-      d3.selectAll(".tooltip").remove();
 
       for (country in covidConfirmedData) {
             if (country == "$World")

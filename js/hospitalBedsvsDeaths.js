@@ -1,9 +1,7 @@
 function hospitalBeds_vs_deaths_data() {
       console.log("hospitalBeds_vs_deaths_data()");
-
+      resetGraphSpace()
       var jsonArray = [];
-      d3.selectAll("svg").remove();
-      d3.selectAll(".tooltip").remove();
 
       for (country in covidDeathData) {
             if (country == "$World")

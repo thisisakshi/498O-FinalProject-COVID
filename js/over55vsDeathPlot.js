@@ -2,8 +2,7 @@ function olderpopulation_vs_deaths_data() {
       console.log("healthGDP_vs_deaths_data()");
 
       var jsonArray = [];
-      d3.selectAll("svg").remove();
-      d3.selectAll(".tooltip").remove();
+      resetGraphSpace()
 
       for (country in covidDeathData) {
             if (country == "$World")
