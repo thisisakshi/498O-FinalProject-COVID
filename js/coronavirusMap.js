@@ -77,7 +77,12 @@ function coronavirus() {
           // set the color of each country
         .attr("fill", function (d) {
             d.total = data.get(d.id) || 0;
-            return colorScale(d.total);
+            if (d.total == 0) {
+              return "#ccc";
+            }
+            else {
+              return colorScale(d.total);
+            }
           })
         .on("click", clickHandler)
 
