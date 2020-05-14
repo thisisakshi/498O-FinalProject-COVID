@@ -62,7 +62,27 @@ function coronavirus() {
             .attr('class', 'd3-tip')
             .offset([-10, 0])
             .html(function(d) {
-              return "<strong>Country: </strong><span class='details'>" + codeToCountry.get(d.id) + "<br></span>" + "<strong>Confirmed Cases: </strong><span class='details'>" + d.total + "</span>";
+              var country;
+              
+              country = codeToCountry.get(d.id) || d.id;
+              if (d.id == "SDS") {
+                country = "South Sudan"; // South Sudan typo
+              }
+              else if (d.id == "TKM") {
+                country = "Turkmenistan";
+              }
+              else if (d.id == "ATA") {
+                country = "Antarctica";
+              }
+              else if (d.id == "LSO") {
+                country = "Lesotho";
+              }
+              // Turkmenistan - TKM
+              // Antarctica - ATA
+              // Lesotho - LSO
+
+
+              return "<strong>Country: </strong><span class='details'>" + country + "<br></span>" + "<strong>Confirmed Cases: </strong><span class='details'>" + d.total + "</span>";
             })
     svg.call(tip);
     
