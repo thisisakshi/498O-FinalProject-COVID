@@ -1,3 +1,5 @@
+
+
 function cvLineGraph(country) {
 
   resetGraphSpace()
@@ -43,23 +45,22 @@ var line = d3
     return yScale(d["concentration"]);
   });
 
+// transform width + 20 to accomodate y axis label
 var svg = d3.select(".tableRight").append("svg")
+            .attr("id", "lineGraph")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
-            .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+            .attr("transform","translate(" + (margin.left + 20) + "," + margin.top + ")");
 
-// Read in data
-// d3.json("https://pomber.github.io/covid19/timeseries.json")
-//      .then(DATA => {
-       //console.log(DATA);
-           for (x in testData) {
-           	console.log(country);
+
+           for (x in lineData) {
+           	//console.log(country);
            	if (country == "USA") {
            		country = "US";
            	}
              if(x == country){ //country name variablle here
-               data = testData[x];
+               data = lineData[x];
              }
            }
            //console.log(d3.keys(data[0]));
@@ -68,12 +69,26 @@ var svg = d3.select(".tableRight").append("svg")
            });
            color.domain(productCategories);
 
+           //console.log("categories: " + productCategories);
+
            var confirmedCases = [];
+
+           //console.log(data);
+           //console.log(JSON.stringify(data, null, 2));
+
+           var dates = [];
+
            // Format the data field
            data.forEach(function(d) {
-             d["date"] = parseDate(d["date"]);
+             //d["date"] = parseDate(d["date"]);
+             dates.push(parseDate(d["date"]));
              confirmedCases.push(d["confirmed"]);
            });
+
+
+        //console.log("date: " + data[0]["date"]);
+           
+
 
 
            // Reformat data
@@ -82,16 +97,18 @@ var svg = d3.select(".tableRight").append("svg")
            var concentrations = productCategories.map(function(category) {
              return {
                category: category,
-               datapoints: data.map(function(d) {
-                 return { date: d["date"], concentration: +d[category] };
+               datapoints: data.map(function(d, i) {
+                 return { date: dates[i], concentration: +d[category] };
                })
              };
            });
 
+           //console.log(JSON.stringify(concentrations, null, 2))
+
           // Set the domain of the axes
           xScale.domain(
-            d3.extent(data, function(d) {
-              return d["date"];
+            d3.extent(dates, function(d) {
+              return d;
             })
           );
 
@@ -143,3 +160,42 @@ var svg = d3.select(".tableRight").append("svg")
   addLabels("Timeline","# of Cases")
 
 }
+
+
+// var svg = d3.select(".tableRight").append("svg")
+//             .attr("width", width + margin.left + margin.right)
+//             .attr("height", height + margin.top + margin.bottom)
+//             .append("g")
+//             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
+
+
+// Define responsive behavior
+// function resize() {
+
+// var svg = d3.select("#lineGraph");
+
+// // Update the range of the scale with new width/height
+//   xScale.range([0, width]);
+//   yScale.range([height, 0]);
+
+//   // Update the axis and text with the new scale
+//   svg
+//     .select(".x.axis")
+//     .attr("transform", "translate(0," + height + ")")
+//     .call(xAxis);
+
+//   svg.select(".y.axis").call(yAxis);
+
+//   // Force D3 to recalculate and update the line
+//   svg.selectAll(".line").attr("d", function(d) {
+//     return line(d.datapoints);
+//   });
+
+//   // Update the tick marks
+//   xAxis.ticks(Math.max(width / 75, 2));
+//   yAxis.ticks(Math.max(height / 50, 2));
+
+  
+
+// }
+

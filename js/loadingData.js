@@ -3,7 +3,7 @@ width = 800 - margin.left - margin.right,
 height = 600 - margin.top - margin.bottom;
 
 
-var testData;
+var lineData;
 
 var covidDeathData = new d3.map();
 var covidConfirmedData = new d3.map();
@@ -18,6 +18,7 @@ var codeToCountry = new d3.map()
 
 function resetGraphSpace() {
       d3.selectAll("svg").remove();
+      d3.selectAll(".line").remove();
       d3.selectAll(".curve").remove();
       d3.selectAll(".d3-tip").remove();
   }
@@ -51,7 +52,9 @@ d3.queue()
                         covidRecoveredData.set(country, d[x][len - 1]["recovered"]);
                         covidDeathData.set(country, d[x][len - 1]["deaths"]);       
                   } 
-                  testData = d;
+                  lineData = d;
+
+                  
             })
       .await(ready);
 

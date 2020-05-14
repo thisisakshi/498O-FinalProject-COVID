@@ -5,7 +5,7 @@ function clickHandler(d) {
 }
 
 function coronavirus() {
-  console.log("coronavirusMap()")
+  //console.log("coronavirusMap()")
   // resetGraphSpace();
   d3.selectAll("svg").remove();
   d3.selectAll(".curve").remove();
