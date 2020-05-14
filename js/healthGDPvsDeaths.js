@@ -21,7 +21,7 @@ function healthGDP_vs_deaths_data() {
 function addCountryItemGDP(jsonArray, country, deaths, health) {
       console.log("HELLOOO");
       jsonArray.push({
-          "country": country,
+          "country": country.substr(1),
           "deaths": deaths ,
           "healthGDP": health
       });

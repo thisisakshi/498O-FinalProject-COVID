@@ -17,7 +17,7 @@ function olderpopulation_vs_deaths_data() {
 
 function addCountryItem55(jsonArray, country, deaths, peopleAbove55) {
       jsonArray.push({
-          "country": country,
+          "country": country.substr(1),
           "deaths": deaths ,
           "peopleAbove55": peopleAbove55
       });

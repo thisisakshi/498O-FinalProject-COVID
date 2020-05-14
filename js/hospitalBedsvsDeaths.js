@@ -16,7 +16,7 @@ function hospitalBeds_vs_deaths_data() {
 
 function addCountryItemBeds(jsonArray, country, deaths, noOfBeds) {
       jsonArray.push({
-          "country": country,
+          "country": country.substr(1),
           "deaths": deaths ,
           "noOfBeds": noOfBeds
       });
