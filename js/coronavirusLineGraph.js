@@ -14,10 +14,10 @@ function cvLineGraph(country) {
 
  d3.select(".tableRight").append('div').attr("class","curve")
  .html(function(d) {
-  return "&emsp;&emsp;&emsp;&emsp;<strong>Country: <span>" + countryName + "<br></span></strong>" + 
+  return "<p style='border:2px; border-style:solid;border-radius: 25px; border-color: gray;'>&emsp;&emsp;&emsp;&emsp;<strong>Country: <span>" + countryName + "<br></span></strong>" + 
          "&emsp;&emsp;&emsp;&emsp;<strong>Confirmed Cases: </strong><span>" + covidConfirmedData.get(countryName) + "<br/></span>" + 
          "&emsp;&emsp;&emsp;&emsp;<strong>Recovered: </strong><span>" + covidRecoveredData.get(countryName) + "<br/></span>" + 
-         "&emsp;&emsp;&emsp;&emsp;<strong>Deaths: </strong><span>" + covidDeathData.get(countryName)+ "<br/></span>"
+         "&emsp;&emsp;&emsp;&emsp;<strong>Deaths: </strong><span>" + covidDeathData.get(countryName)+ "<br/></span></p>"
 })
 
 
