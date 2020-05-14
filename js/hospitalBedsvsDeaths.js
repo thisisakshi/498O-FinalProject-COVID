@@ -7,14 +7,14 @@ function hospitalBeds_vs_deaths_data() {
             if (country == "$World")
                   break;
             if (covidDeathData[country] > 0 && hospitalBedsData[country] > 0)
-                  addCountryItem(jsonArray, country, covidDeathData[country], hospitalBedsData[country])
+                  addCountryItemBeds(jsonArray, country, covidDeathData[country], hospitalBedsData[country])
       }
 
-      drawGraph(jsonArray);
+      drawGraphBeds(jsonArray);
       addLabels("Number of deaths (as of yesterday)", "# of hospital beds per 100k")
 }
 
-function addCountryItem(jsonArray, country, deaths, noOfBeds) {
+function addCountryItemBeds(jsonArray, country, deaths, noOfBeds) {
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
@@ -22,7 +22,7 @@ function addCountryItem(jsonArray, country, deaths, noOfBeds) {
       });
   }
 
-function drawGraph(jsonArray) {
+function drawGraphBeds(jsonArray) {
       
       console.log("drawGraph()")
       
@@ -45,7 +45,7 @@ function drawGraph(jsonArray) {
 
       // Add Y axis
       var y = d3.scaleLinear()
-      .domain([0,50])
+      .domain([0,16])
       .range([ height, 0]);
 
       svg.append("g")

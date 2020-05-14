@@ -21,6 +21,7 @@ function resetGraphSpace() {
       d3.selectAll(".line").remove();
       d3.selectAll(".curve").remove();
       d3.selectAll(".d3-tip").remove();
+      d3.selectAll(".tooltip").remove();
   }
 
 // Loading all the data

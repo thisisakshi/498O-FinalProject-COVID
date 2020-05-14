@@ -1,29 +1,35 @@
 function healthGDP_vs_deaths_data() {
       console.log("healthGDP_vs_deaths_data()");
-
-      var jsonArray = [];
       resetGraphSpace()
+      var jsonArray = [];
+      
+      console.log(covidDeathData);
 
       for (country in covidDeathData) {
-            if (covidDeathData[country] > 0 && healthData[country] > 0)
-                  addCountryItem(jsonArray, country, covidDeathData[country], healthData[country])
+            
+            if (covidDeathData[country] > 0 && healthData[country] > 0) {
+                  
+                  addCountryItemGDP(jsonArray, country, +covidDeathData[country], +healthData[country])
+      
+            }
       }
 
-      drawGraph(jsonArray);
+      drawGraphGDP(jsonArray);
       addLabels("Number of deaths (as of yesterday)", "Health GDP %")
 }
 
-function addCountryItem(jsonArray, country, deaths, healthData) {
+function addCountryItemGDP(jsonArray, country, deaths, health) {
+      console.log("HELLOOO");
       jsonArray.push({
           "country": country,
           "deaths": deaths ,
-          "healthGDP": healthData
+          "healthGDP": health
       });
   }
 
-function drawGraph(jsonArray) {
+function drawGraphGDP(jsonArray) {
       
-      console.log("drawGraph()")
+      console.log("drawGraphGDP()")
       
       var svg = d3.select(".tableRight").append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -32,23 +38,23 @@ function drawGraph(jsonArray) {
             .attr("transform","translate(" + margin.left + "," + margin.top + ")");
 
       // Add X axis
-      let x = d3.scaleLog()
+      let xGDP = d3.scaleLog()
       .domain([0.1, 1000000])
       .range([0, width]);
       
       svg.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x)
+      .call(d3.axisBottom(xGDP)
       .tickValues([1,10,100,1000,10000,100000, 1000000])
       .tickFormat(d3.format("d")));
 
       // Add Y axis
-      let y = d3.scaleLinear()
+      let yGDP = d3.scaleLinear()
       .domain([0,20])
       .range([ height, 0]);
 
       svg.append("g")
-      .call(d3.axisLeft(y));
+      .call(d3.axisLeft(yGDP));
 
       // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
       // Its opacity is set to 0: we don't see it by default.
@@ -90,8 +96,8 @@ function drawGraph(jsonArray) {
       .enter()
       .append("circle")
       .attr("id", "circleBasicTooltip")
-      .attr("cx", d => x(d["deaths"]))
-      .attr("cy", d => y(d["healthGDP"]))
+      .attr("cx", d => xGDP(d["deaths"]))
+      .attr("cy", d => yGDP(d["healthGDP"]))
       .attr("r", 7)
       .style("fill", "blue")
       .style("opacity", .4)

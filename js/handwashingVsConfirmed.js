@@ -7,14 +7,14 @@ function handwashing_vs_confirmed_data() {
             if (country == "$World")
                   break;
             if (covidConfirmedData[country] > 0 && handwashingStationData[country] > 0)
-                  addCountryItem(jsonArray, country, covidConfirmedData[country], handwashingStationData[country])
+                  addCountryItemHandwash(jsonArray, country, covidConfirmedData[country], handwashingStationData[country])
       }
 
-      drawGraph(jsonArray);
+      drawGraphHandwash(jsonArray);
       addLabels("Number of confirmed Cases (as of yesterday)", "Handwashing Facilities")
 }
 
-function addCountryItem(jsonArray, country, confirmed, handwashingStations) {
+function addCountryItemHandwash(jsonArray, country, confirmed, handwashingStations) {
       jsonArray.push({
           "country": country,
           "confirmed": confirmed ,
@@ -22,7 +22,7 @@ function addCountryItem(jsonArray, country, confirmed, handwashingStations) {
       });
   }
 
-function drawGraph(jsonArray) {
+function drawGraphHandwash(jsonArray) {
       
       console.log("drawGraph()")
       
@@ -45,7 +45,7 @@ function drawGraph(jsonArray) {
 
       // Add Y axis
       var y = d3.scaleLinear()
-      .domain([0,120])
+      .domain([0,110])
       .range([ height, 0]);
 
       svg.append("g")

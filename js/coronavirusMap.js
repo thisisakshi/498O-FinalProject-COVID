@@ -10,6 +10,7 @@ function coronavirus() {
   d3.selectAll("svg").remove();
   d3.selectAll(".curve").remove();
   d3.selectAll(".d3-tip").remove();
+  d3.selectAll(".tooltip").remove();
   
   // The svg
   var svg = d3.select(".tableRight")
