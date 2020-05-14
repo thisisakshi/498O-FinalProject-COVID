@@ -16,7 +16,7 @@ function handwashing_vs_confirmed_data() {
 
 function addCountryItemHandwash(jsonArray, country, confirmed, handwashingStations) {
       jsonArray.push({
-          "country": country,
+          "country": country.substr(1),
           "confirmed": confirmed ,
           "handwashingStations": handwashingStations
       });
