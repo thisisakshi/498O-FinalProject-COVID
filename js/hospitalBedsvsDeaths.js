@@ -51,39 +51,32 @@ function drawGraphBeds(jsonArray) {
       svg.append("g")
       .call(d3.axisLeft(y));
 
-      // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
-      // Its opacity is set to 0: we don't see it by default.
-      var tooltip = d3.select(".tableRight")
-      .append("div")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "white")
-      .style("border", "solid")
-      .style("border-width", "1px")
-      .style("border-radius", "5px")
-      .style("padding", "10px")
+      var tooltip = d3.select("#vis-container").append("div")
+                  .attr("class", "tooltip")
+                  .style("opacity", 0);
 
-      // A function that change this tooltip when the user hover a point.
-      // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-      var mouseover = function(d) {
-            tooltip
-            .style("opacity", 1)
-      }
-      
-      var mousemove = function(d) {
-            tooltip
-            .html(d["country"] + "<br/> Deaths: " + d["deaths"]+ "<br/> Number of Hospital Beds per 100k: " + d["noOfBeds"])
-            .style("left", (d3.mouse(this)[0]+90) + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-            .style("top", (d3.mouse(this)[1]) + "px")
-      }
-      
-      // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-      var mouseleave = function(d) {
-            tooltip
-            .transition()
-            .duration(200)
-            .style("opacity", 0)
-    }
+              // tooltip mouseover event handler
+              var tipMouseover = function(d) {
+                  var color = "black";
+                  var html  = 
+                  "<span><b>"+d.country+"</b><br/>" + 
+                  "<span style='color:" + color + ";'>Deaths: " + d.deaths + "</span><br/>" + 
+                  "<span style='color:" + color + ";'>Beds per 100K: " + d.noOfBeds + "</span><br/>";
+
+                  tooltip.html(html)
+                      .style("left", (d3.event.pageX + 15) + "px")
+                      .style("top", (d3.event.pageY - 28) + "px")
+                    .transition()
+                      .duration(200) // ms
+                      .style("opacity", .9) // started as 0!
+
+              };
+              // tooltip mouseout event handler
+              var tipMouseout = function(d) {
+                  tooltip.transition()
+                      .duration(300) // ms
+                      .style("opacity", 0); // don't care about position!
+              };
 
       svg.append('g')
       .selectAll("dot")
@@ -96,7 +89,6 @@ function drawGraphBeds(jsonArray) {
       .attr("r", 7)
       .style("fill", "red")
       .style("opacity", .4)
-      .on("mouseover", mouseover )
-      .on("mousemove", mousemove )
-      .on("mouseleave", mouseleave )     
+      .on("mouseover", tipMouseover)
+      .on("mouseout", tipMouseout);        
 }

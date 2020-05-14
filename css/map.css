@@ -105,4 +105,13 @@ h1,p, .centerContainer{
       .details{
         color:white;
       }
-  
+      .tooltip {
+        position: absolute;
+        padding: 10px;
+        font-size: 12px;
+        width:  auto;
+        height: auto;
+        pointer-events: none;
+        background-color: goldenrod;
+        border-radius: 6px;
+    }
