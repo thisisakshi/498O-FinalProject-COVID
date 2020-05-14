@@ -94,7 +94,7 @@ function drawGraphGDP(jsonArray) {
       .attr("cx", d => xGDP(d["deaths"]))
       .attr("cy", d => yGDP(d["healthGDP"]))
       .attr("r", 7)
-      .style("fill", "blue")
+      .style("fill", "red")
       .style("opacity", .4) 
       .on("mouseover", tipMouseover)
       .on("mouseout", tipMouseout);      
