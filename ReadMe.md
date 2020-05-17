@@ -1,11 +1,12 @@
 # Health Systems and the COVID-19 Pandemic
+![Image](corona.jpg)
 
-### University of Maryland, College Park
-### Spring 2020 | CMSC 498O: Introduction to Data Visualisation
+University of Maryland, College Park
+Spring 2020 | CMSC 498O: Introduction to Data Visualisation
 
-## Running the projec
-` node server.js`
-` open map.html ` (preferably in Chrome)
+### Running the project
+1. ` node server.js`
+2. ` open map.html ` (preferably in Chrome)
 
 ## Data
 1. https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv
@@ -39,5 +40,3 @@ Our visualization tool has shown that there is not much correlation seen between
 1. https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
 2. https://bl.ocks.org/JulienAssouline/1ae3480c5277e2eecd34b71515783d6f
 3. https://bl.ocks.org/austinczarnecki/fe80afa64724c9630930
-
-![Image](corona.jpg)
