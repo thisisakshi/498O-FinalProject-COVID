@@ -5,8 +5,10 @@ University of Maryland, College Park
 Spring 2020 | CMSC 498O: Introduction to Data Visualisation
 
 ### Running the project
-1. ` node server.js`
-2. ` open map.html ` (preferably in Chrome)
+1. `git clone https://github.com/thisisakshi/498O-FinalProject-COVID.git` 
+2. cd to `/498O-FinalProject-COVID` on your computer
+3. Run `node server.js`
+4. `open map.html ` (preferably in Chrome)
 
 ## Data
 1. https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv
@@ -31,10 +33,12 @@ Our visualization tool has shown that there is not much correlation seen between
 ## Related Work/Tools
 
 1. https://coronavirus.jhu.edu/map.html
-2. https://www.tableau.com/covid-19-coronavirus-data-resources/global-tracker
-3. https://www.zdnet.com/article/how-to-track-the-coronavirus-dashboard-delivers-real-time-view-of-the-deadly-virus/ 
-4. http://euclid.psych.yorku.ca/www/psy6135/papers/ClevelandMcGill1984.pdf
-5. https://queue.acm.org/detail.cfm?id=2146416
+2. https://update.covid19.ca.gov
+3. https://www.cdc.gov/mmwr/volumes/69/wr/mm6915e3.htm?s_cid=mm6915e3_e
+4. https://www.tableau.com/covid-19-coronavirus-data-resources/global-tracker
+5. https://www.zdnet.com/article/how-to-track-the-coronavirus-dashboard-delivers-real-time-view-of-the-deadly-virus/ 
+6. http://euclid.psych.yorku.ca/www/psy6135/papers/ClevelandMcGill1984.pdf
+7. https://queue.acm.org/detail.cfm?id=2146416
 
 ## References
 1. https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
