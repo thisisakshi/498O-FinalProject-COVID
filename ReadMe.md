@@ -1,5 +1,5 @@
 # Health Systems and the COVID-19 Pandemic
-![Image description]("worldMap.png")
+![Image](worldMap.png)
 
 Running the project: 
 1. npm install 
