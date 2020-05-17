@@ -5,8 +5,10 @@ University of Maryland, College Park
 Spring 2020 | CMSC 498O: Introduction to Data Visualisation
 
 ### Running the project
-1. ` node server.js`
-2. ` open map.html ` (preferably in Chrome)
+1. `git clone https://github.com/thisisakshi/498O-FinalProject-COVID.git` 
+2. cd to `/498O-FinalProject-COVID` on your computer
+3. Run `node server.js`
+4. `open map.html ` (preferably in Chrome)
 
 ## Data
 1. https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv
