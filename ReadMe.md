@@ -1,3 +1,6 @@
+# Health Systems and the COVID-19 Pandemic
+![Image description]("worldMap.jpg")
+
 Running the project: 
 1. npm install 
 2. npm install datamaps
