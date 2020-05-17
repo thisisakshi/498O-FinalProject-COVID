@@ -1,17 +1,43 @@
-Group Members: 
-1. Lucia Kim
-2. Suyash Nepal
-3. Kelli Webber
-4. Akshita Agarwal
+# Health Systems and the COVID-19 Pandemic
 
-Datasets:
-1. https://www.kaggle.com/danevans/world-bank-wdi-212-health-systems
-2. https://data.humdata.org/dataset/novel-coronavirus-2019-ncov-cases (not using)
-3. https://github.com/pomber/covid19 (JSON)
+### University of Maryland, College Park
+### Spring 2020 | CMSC 498O: Introduction to Data Visualisation
 
-Final Project Goals: 
-1. GeoMap .
-2. Color code by continent and have color intensity based on severity/ number of cases by country in that continent 
+## Running the projec
+` node server.js`
+` open map.html ` (preferably in Chrome)
 
-Final Project Goal: 
-1. Then work on tooltips to display public health system data when one clicks on the country.
+## Data
+1. https://raw.githubusercontent.com/eliasdabbas/life_expectancy/master/data/country_data_master.csv
+   1. Age Data
+2. https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv
+   1. Hospital Beds
+   2. Handwashing facilities
+3. https://pomber.github.io/covid19/timeseries.json
+   1. Confirmed Cases
+   2. Deaths
+   3. Recovered
+4. https://www.kaggle.com/danevans/world-bank-wdi-212-health-systems
+   1. Health GDP Data
+
+
+## Abstract
+
+Many of the data visualizations for the coronavirus pandemic focus on the number of confirmed cases and deaths. There are not many visualizations that focus on the spread of the pandemic, especially in relation to country health systems. We thought it would be interesting to see whether there is any relation to how ‘good’ a country’s health system is and the spread of the virus in the country. Does the GDP expenditure of a country correlate to a better response to the pandemic? 
+
+Our visualization tool has shown that there is not much correlation seen between health system factors, such as GDP expenditure, and the spread of the virus within a country. This was a surprising result, we expected there to be a clear correlation between health systems and coronavirus cases. Our research sparks more questions, we are curious as to what hidden factors led us to our results. It would be interesting for future researchers to build off of our discoveries.
+
+## Related Work/Tools
+
+1. https://coronavirus.jhu.edu/map.html
+2. https://www.tableau.com/covid-19-coronavirus-data-resources/global-tracker
+3. https://www.zdnet.com/article/how-to-track-the-coronavirus-dashboard-delivers-real-time-view-of-the-deadly-virus/ 
+4. http://euclid.psych.yorku.ca/www/psy6135/papers/ClevelandMcGill1984.pdf
+5. https://queue.acm.org/detail.cfm?id=2146416
+
+## References
+1. https://bl.ocks.org/d3noob/a22c42db65eb00d4e369
+2. https://bl.ocks.org/JulienAssouline/1ae3480c5277e2eecd34b71515783d6f
+3. https://bl.ocks.org/austinczarnecki/fe80afa64724c9630930
+
+![Image](corona.jpg)
